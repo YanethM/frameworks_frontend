@@ -17,38 +17,39 @@ export default {
     loading: false,
     error: null,
   },
-  // Cambiar el estado mediante mutaciones
-  SET_CHARACTERS(state, data) {
-    state.characters = data.results
-    state.pagination = {
-      currentPage: data.info.pages > 0 ? state.pagination.currentPage : 1,
-      totalPages: data.info.pages,
-      totalCount: data.info.count,
-    }
-  },
-  SET_SELECTED_CHARACTER(state, character) {
-    state.selectedCharacter = character
-  },
-  // Una sola mutación maneja todos los filtros, siendo reutilizable
-  SET_FILTER(state, { key, value }) {
-    state.filters[key] = value
-  },
-  SET_PAGE(state, page) {
-    state.pagination.currentPage = page
-  },
-  SET_LOADING(state, status) {
-    state.loading = status
-  },
-  SET_ERROR(state, error) {
-    state.error = error
-  },
-  RESET_FILTERS(state) {
-    state.filters = {
-      name: '',
-      status: '',
-      species: '',
-    }
-    state.pagination.currentPage = 1
+  mutations: {
+    SET_CHARACTERS(state, data) {
+      state.characters = data.results
+      state.pagination = {
+        currentPage: data.info.pages > 0 ? state.pagination.currentPage : 1,
+        totalPages: data.info.pages,
+        totalCount: data.info.count,
+      }
+    },
+    SET_SELECTED_CHARACTER(state, character) {
+      state.selectedCharacter = character
+    },
+    // Una sola mutación maneja todos los filtros, siendo reutilizable
+    SET_FILTER(state, { key, value }) {
+      state.filters[key] = value
+    },
+    SET_PAGE(state, page) {
+      state.pagination.currentPage = page
+    },
+    SET_LOADING(state, status) {
+      state.loading = status
+    },
+    SET_ERROR(state, error) {
+      state.error = error
+    },
+    RESET_FILTERS(state) {
+      state.filters = {
+        name: '',
+        status: '',
+        species: '',
+      }
+      state.pagination.currentPage = 1
+    },
   },
   actions: {
     async fetchCharacters({ commit, state }) {
