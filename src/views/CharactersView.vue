@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import CharacterCard from './CharacterCard.vue'
+import CharacterCard from '../components/CharacterCard.vue'
 
 export default {
   name: 'CharactersView',
